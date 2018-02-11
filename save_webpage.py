@@ -6,27 +6,27 @@ from io import BytesIO
 from PIL import Image
 
 
-DEFAULT_IMAGE_EXTENSION = "JPEG"
+DEFAULT_IMAGE_FORMAT = "JPEG"
 DEFAULT_IMAGE_QUALITY = 80
 
 
 TIME_TO_WAIT = 6
 
 
-def save_webpage(driver_path, url, file_name, options=None, cookies=None, image_options=None):
+def save_webpage(driver_path, url, file_name, options=None, cookies=None, **image_options):
     """
 
-    :param driver_path: path to webdriver
-    :param url:
+    :param driver_path: path to google chrome driver
+    :param url: valid url
     :param file_name:
     :param options: browser options
     :param cookies: list of additional cookies
-    :param image_options: contains information about output file quality and extension
+    :param image_options: keywords parameters to pillow save function
     :type url: str
     :type file_name: str
     :type cookies: list
     :type image_options: dict
-    :return: name of file if all is OK
+    :return: name of file
     """
 
     # necessary javascript
@@ -36,10 +36,8 @@ def save_webpage(driver_path, url, file_name, options=None, cookies=None, image_
     scroll_to_js = "window.scrollTo(0, {})"
 
     # define necessary image properties
-    if image_options is None:
-        image_options = {}
-    image_extension = image_options.get("extension") or DEFAULT_IMAGE_EXTENSION
-    image_quality = image_options.get("quality") or DEFAULT_IMAGE_QUALITY
+    image_options["format"] = image_options.get("format") or DEFAULT_IMAGE_FORMAT
+    image_options["quality"] = image_options.get("quality") or DEFAULT_IMAGE_QUALITY
 
     # if have browser options - just add it
     chrome_options = Options()
@@ -90,7 +88,7 @@ def save_webpage(driver_path, url, file_name, options=None, cookies=None, image_
     else:
         screenshot.paste(slices[-1], (0, (scroll_height - inner_height) * device_pixel_ratio))
 
-    screenshot.save(file_name, image_extension, quality=image_quality, optimize=True, progressive=True)
+    screenshot.save(file_name, **image_options)
     driver.quit()
 
     return file_name

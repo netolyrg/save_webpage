@@ -61,23 +61,23 @@ This example shows how to load page with cookies.
 
 Actually, it load page, add cookies and then reload page. This happens due to selenium specific behavior. For addition information about selenium and cookies see [docs](http://www.seleniumhq.org/docs/03_webdriver.jsp).
 
-#### PIL file extensions and image quality support
+#### PIL keywords
 
 ```
 image_options = {
-        "extension": "JPEG",
-        "quality": 75
+        "format": "JPEG",
+        "quality": 80
     }
 
 save_webpage(
     "path/to/driver",
     "https://google.com/",
     "google.jpg",
-    image_options=image_options
+    **image_options
     )
 ```
 
-In this example shows how to save image in JPEG format with 75 quality.
+In this example shows how to save image in JPEG format with 80 quality (default parameters).
 
 This functionality provided by PIL library. For more information see [docs](http://pillow.readthedocs.io/en/3.1.x/handbook/image-file-formats.html)
 
@@ -98,6 +98,7 @@ This required because of retina display pixel ratio (==2).
 #### TODOs
 
 - [ ] Add other webdrivers support
-- [ ] Fix image_options
+- [x] Fix image_options
 - [ ] Add user-agent support
 - [ ] Make simple retina display support
+- [ ] Add inline use (?)
