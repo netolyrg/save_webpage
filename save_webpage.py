@@ -43,7 +43,6 @@ def save_webpage(driver_path, url, file_name, options=None, cookies=None, **imag
     chrome_options = Options()
     if options:
         for option in options:
-            logger.debug("adding {} option".format(option))
             chrome_options.add_argument(option)
 
     driver = webdriver.Chrome(
