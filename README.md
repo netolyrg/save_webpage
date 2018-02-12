@@ -8,6 +8,7 @@ This functions save pages to files (more than 30 formats available) and support 
 I need this function for testing purposes, but I think it can be useful in another tasks.
 
 It perfectly works in headless mode on macOS High Sierra 10.13 with Google Chrome 64.
+And works with headless mode on Windows 10 with Google Chrome 64.
 
 
 ## Usage
@@ -26,7 +27,7 @@ it's simple usage of function. In your folder you found google.jpg image of whol
 #### Additional browser options support
 
 ```
-options = ["--headless", "--window-size=(1280, 720)"]
+options = ["--headless", "--window-size=1280, 720"]
 
 save_webpage(
     "path/to/driver",
@@ -37,6 +38,8 @@ save_webpage(
 ```
 
 In this example chrome starts in headless mode with window size 1280x720.
+
+For **windows** in headless mode don't forget about `--disable-gpu` key.
 
 #### Cookies support
 
@@ -89,7 +92,7 @@ For example:
 
 ```
 
-options = ["--window-size=(2560//2, 1600//2)"]
+options = ["--window-size=2560//2, 1600//2"]
 ```
 
 This required because of retina display pixel ratio (==2).
