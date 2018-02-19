@@ -50,6 +50,13 @@ def save_webpage(driver_path, url, file_name, options=None, cookies=None, **imag
         options=chrome_options
     )
 
+    device_pixel_ratio = driver.execute_script(device_pixel_ratio_js)
+
+    if device_pixel_ratio > 1:
+        old_width = driver.get_window_size()['width']
+        old_heidht = driver.get_window_size()['height']
+        driver.set_window_size(old_width//device_pixel_ratio, old_heidht//device_pixel_ratio)
+
     driver.get(url)
 
     # set cookies
@@ -64,7 +71,6 @@ def save_webpage(driver_path, url, file_name, options=None, cookies=None, **imag
 
     inner_height = driver.execute_script(inner_height_js)
     scroll_height = driver.execute_script(scroll_height_js)
-    device_pixel_ratio = driver.execute_script(device_pixel_ratio_js)
 
     # hide scrollbar coz it's lame
     driver.execute_script("document.documentElement.style.overflow = 'hidden'")

@@ -84,23 +84,10 @@ In this example shows how to save image in JPEG format with 80 quality (default 
 
 This functionality provided by PIL library. For more information see [docs](http://pillow.readthedocs.io/en/3.1.x/handbook/image-file-formats.html)
 
-#### Retina
-
-If you using retina display and `--window-size` option, set it to half of your requirements. Otherwise your resulting pictures' resolution will be twice bigger.
-
-For example:
-
-```
-
-options = ["--window-size=2560//2, 1600//2"]
-```
-
-This required because of retina display pixel ratio (==2).
-
 ## Other
 #### TODOs
 
 - [ ] Add other webdrivers support
 - [x] Fix image_options
-- [ ] Make simple retina display support
+- [x] Make simple Retina (and other with big device pixel ratio) display support
 - [ ] Add inline use (?)
