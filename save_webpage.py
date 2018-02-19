@@ -60,7 +60,6 @@ def save_webpage(driver_path, url, file_name, options=None, cookies=None, **imag
         # we need to 'activate' cookies
         driver.refresh()
 
-    # TODO do better wait
     driver.implicitly_wait(TIME_TO_WAIT)
 
     inner_height = driver.execute_script(inner_height_js)

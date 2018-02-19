@@ -102,6 +102,5 @@ This required because of retina display pixel ratio (==2).
 
 - [ ] Add other webdrivers support
 - [x] Fix image_options
-- [ ] Add user-agent support
 - [ ] Make simple retina display support
 - [ ] Add inline use (?)
