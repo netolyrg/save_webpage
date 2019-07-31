@@ -1,5 +1,6 @@
 # Byte-compiled
 __pycache__/
+.venv/
 
 # PyCharm stuff
 .idea/
