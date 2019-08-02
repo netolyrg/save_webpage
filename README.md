@@ -6,9 +6,12 @@ Simple python function that provide you to take a whole web page screenshot from
 This functions save pages to files (more than 30 formats available).
 
 I need this function for testing purposes, but I think it can be useful in another tasks.
-``
-It perfectly works in headless mode on macOS Mojave 10.14 with Google Chrome 75, 
-on macOS High Sierra 10.13 with Google Chrome 64 and on Windows 10 with Google Chrome 64.
+
+Check work with:
+* Firefox (with headless mode)
+* Chrome (with headless mode)
+
+State of driver after script will be the same as before.
 
 ## Usage
 #### Simple
@@ -27,6 +30,21 @@ driver.quit()
 ```
 
 For **windows** in headless mode don't forget about `--disable-gpu` key.
+#### Hide scrollbar
+By default, script hide scroll bar. But you can manually disable it
+```
+from save_webpage import save_webpage
+from selenium import webdriver
+
+
+driver = webdriver.Chrome('./chromedriver')
+driver.get('https://github.com/about')
+
+save_webpage(driver, 'page.jpg', hide_scrollbar=False)
+
+driver.quit()
+
+```
 #### PIL keywords
 
 ```
@@ -55,5 +73,5 @@ This functionality provided by PIL library. For more information see [docs](http
 ## Other
 #### TODOs
 
-- [ ] Check other webdrivers support
+- [x] Check other webdrivers support
 - [ ] Add inline use (?)
