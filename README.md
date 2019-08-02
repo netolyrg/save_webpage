@@ -11,7 +11,7 @@ Check work with:
 * Firefox (with headless mode)
 * Chrome (with headless mode)
 
-State of driver after script will be the same as before.
+State of driver after script execution will be the same as before.
 
 ## Usage
 #### Simple
